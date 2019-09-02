@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Belajar Coding</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+      crossorigin="anonymous"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/main.css" />
+    <script src="/main.js"></script>
+  </head>
+  <body>
+    <div class="container" style="padding: 10px">
+        <h1>Edit Data</h1>
+        <form action="/edit/<%= item.id %>" method="POST">
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label">ID</label>
+            <div class="col-sm-8">
+              <input
+                type="text"
+                class="form-control"
+                id="id"
+                value="<%= item.id %>"
+                disabled
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label">String</label>
+            <div class="col-sm-8">
+              <input
+                type="text"
+                class="form-control"
+                id="string"
+                name="string"
+                value="<%= item.dataString %>"
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Integer</label>
+            <div class="col-sm-8">
+              <input
+                type="text"
+                class="form-control"
+                id="integer"
+                name="integer"
+                value="<%= item.dataInteger %>"
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Float</label>
+            <div class="col-sm-8">
+              <input
+                type="text"
+                class="form-control"
+                id="float"
+                name="float"
+                value="<%= item.dataFloat %>"
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Date</label>
+            <div class="col-sm-8">
+              <input
+                type="date"
+                class="form-control"
+                id="date"
+                name="date"
+                value="<%= moment(item.dataDate).format('YYYY-MM-DD') %>"
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Boolean</label>
+            <div class="col-sm-8">
+              <select
+                class="form-control"
+                name="item.dataBoolean"
+                id="boolean"
+              >
+                <option value="true" <%= item.boolean == "" ? "selected" : "" %>>>/---PILIHAN---/<</option>
+                <option value="true" <%= item.boolean == "true" ? "selected" : "" %>>true</option>
+                <option value="false" <%= item.boolean == "false" ? "selected" : "" %>>false</option>
+              </select>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-info">Update</button>
+        </form>
+      </div>
+    
+    </body>
+</html>

@@ -3,11 +3,21 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const { Pool, Client } = require('pg')
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+
 
 var app = express();
+
+var pool = new Pool({
+  user: 'postgres',
+  host: 'localhost',
+  database: 'breaddb',
+  password: '123456',
+  port: 5432,
+})
+
+var indexRouter = require('./routes/index')(pool);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -20,7 +30,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
